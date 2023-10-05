@@ -8,19 +8,21 @@ console.log(secondsValue.textContent);
 
 let startSecondsCountDown;
 
-
 // Function to Coundown seconds
 function secondsCountDown() {
-  let secondsNumber = Number(secondsValue.textContent)
+	let secondsNumber = Number(secondsValue.textContent);
 
-  secondsNumber = secondsNumber - 1
+	secondsNumber = secondsNumber - 1;
 
-  secondsValue.textContent = secondsNumber.toString()  
+	if (secondsNumber > 9) {
+		secondsValue.innerHTML = secondsNumber.toString();
+	} else if (secondsNumber <= 9) {
+		secondsValue.innerHTML = '0' + secondsNumber.toString();
+	}
 
-  if (secondsValue.textContent === '0') {
-    clearInterval(startSecondsCountDown)
-  } 
+	if (secondsValue.textContent === '00') {
+		clearInterval(startSecondsCountDown);
+	}
 }
 
 startSecondsCountDown = setInterval(secondsCountDown, 1000);
-
