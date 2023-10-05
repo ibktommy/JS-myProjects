@@ -7,6 +7,7 @@ const secondsValue = document.querySelector('.seconds p');
 console.log(secondsValue.textContent);
 
 let startSecondsCountDown;
+let startMinutesCountDown;
 
 // Function to Coundown seconds
 function secondsCountDown() {
@@ -21,8 +22,25 @@ function secondsCountDown() {
 	}
 
 	if (secondsValue.textContent === '00') {
-		clearInterval(startSecondsCountDown);
+		// Wait for a seconds so as to show the "00" value of seconds before calling the minutesCountDown-function
+		setTimeout(() => {
+			minutesCountDown();
+		}, 1000);
 	}
 }
-
 startSecondsCountDown = setInterval(secondsCountDown, 1000);
+
+// Function to Countdown minutes
+function minutesCountDown() {
+	secondsValue.innerHTML = '10'; //Reset the value of seconds
+
+	let minutesNumber = Number(minutesValue.textContent);
+
+	minutesNumber = minutesNumber - 1;
+
+	if (minutesNumber > 9) {
+		minutesValue.innerHTML = minutesNumber.toString();
+	} else if (minutesNumber <= 9) {
+		minutesValue.innerHTML = '0' + minutesNumber.toString();
+	}
+}
