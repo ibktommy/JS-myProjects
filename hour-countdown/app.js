@@ -1,22 +1,34 @@
+// Set Variables that gets the timer values from the HTML code 
 const hoursValue = document.querySelector('.hours p');
 const minutesValue = document.querySelector('.minutes p');
 const secondsValue = document.querySelector('.seconds p');
 
-// console.log(hoursValue);
-// console.log(minutesValue);
-console.log(secondsValue.textContent);
-
+// Create a variable that contains the setInterval callback function
 let startCountDown;
 
-// Function to Coundown seconds
+// Function that counts down the Seconds value
 function secondsCountDown() {
-  if (secondsValue.textContent === '00' && minutesValue.textContent === '00') {
-    hoursCountDown()
-  }
+	// Check if the time values are '00' and reset them to all zeros then stop the rest of the codes from running
+	if (
+		secondsValue.textContent === '00' &&
+		minutesValue.textContent === '00' &&
+		hoursValue.textContent === '00'
+	) {
+		secondsValue.innerHTML = '00';
+		minutesValue.innerHTML = '00';
+		hoursValue.innerHTML = '00';
+		return;
+	}
 
-  if (secondsValue.textContent === "00" && minutesValue.textContent !== '00') {
-    minutesCountDown()
-  }
+	// Check if seconds and minutes values are '00', then call the hoursCountDown function
+	if (secondsValue.textContent === '00' && minutesValue.textContent === '00') {
+		hoursCountDown();
+	}
+
+	// Check if the seconds value is '00', then call the minutesCountDown function
+	if (secondsValue.textContent === '00' && minutesValue.textContent !== '00') {
+		minutesCountDown();
+	}
 
 	let secondsNumber = Number(secondsValue.textContent);
 
@@ -29,7 +41,7 @@ function secondsCountDown() {
 	}
 }
 
-// Function to Countdown minutes
+// Function that counts down the Minutes value
 function minutesCountDown() {
 	secondsValue.innerHTML = '60'; //Reset the value of seconds
 
@@ -44,21 +56,21 @@ function minutesCountDown() {
 	}
 }
 
-// Function to Coundown Hours
+// Function that counts down the Hours value
 function hoursCountDown() {
-  minutesValue.innerHTML = '59'; //Reset the value of minutes
-  secondsValue.innerHTML = '60'; //Reset the value of seconds
+	minutesValue.innerHTML = '59'; //Reset the value of minutes
+	secondsValue.innerHTML = '60'; //Reset the value of seconds
 
-  let hoursNumber = Number(hoursValue.textContent);
+	let hoursNumber = Number(hoursValue.textContent);
 
-  hoursNumber= hoursNumber- 1
+	hoursNumber = hoursNumber - 1;
 
-  if (hoursNumber > 9) {
+	if (hoursNumber > 9) {
 		hoursValue.innerHTML = hoursNumber.toString();
 	} else if (hoursNumber <= 9) {
 		hoursValue.innerHTML = '0' + hoursNumber.toString();
 	}
 }
 
-
+// Call the secondsCountDown at an interval of 1 seconds
 startCountDown = setInterval(secondsCountDown, 1000);
