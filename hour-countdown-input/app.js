@@ -125,4 +125,6 @@ resetBtn.addEventListener('click', () => {
 
 	timerBtn.disabled = false;
 	timerBtn.classList.remove('disabled');
+
+	actionBtns.classList.add('hide');
 });
