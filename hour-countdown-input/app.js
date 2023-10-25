@@ -113,3 +113,16 @@ resumeBtn.addEventListener('click', () => {
 	resumeBtn.classList.add('hide');
 	pauseBtn.classList.remove('hide');
 });
+
+// Reset the Countdown and Form
+resetBtn.addEventListener('click', () => {
+	inputForm.reset();
+	clearCountDown = clearInterval(startCountDown);
+
+	hoursDOM.innerHTML = '--';
+	minutesDOM.innerHTML = '--';
+	secondsDOM.innerHTML = '--';
+
+	timerBtn.disabled = false;
+	timerBtn.classList.remove('disabled');
+});
