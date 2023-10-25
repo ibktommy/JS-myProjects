@@ -32,6 +32,8 @@ inputForm.addEventListener('submit', (e) => {
 
 	timerBtn.disabled = true;
 	timerBtn.classList.add('disabled');
+
+	actionBtns.classList.remove('hide');
 });
 
 // Function that counts down the Seconds Value
