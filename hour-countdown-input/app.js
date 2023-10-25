@@ -106,3 +106,10 @@ pauseBtn.addEventListener('click', () => {
 	pauseBtn.classList.add('hide');
 	resumeBtn.classList.remove('hide');
 });
+
+// Resume the Countdown
+resumeBtn.addEventListener('click', () => {
+	startCountDown = setInterval(secondsCountDown, 1000);
+	resumeBtn.classList.add('hide');
+	pauseBtn.classList.remove('hide');
+});
