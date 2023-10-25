@@ -6,14 +6,18 @@ const inputForm = document.querySelector('form');
 let hoursDOM = document.querySelector('.hours p');
 let minutesDOM = document.querySelector('.minutes p');
 let secondsDOM = document.querySelector('.seconds p');
+const actionBtns = document.querySelector('.action-buttons');
+const pauseBtn = document.querySelector('.pause-btn');
+const resetBtn = document.querySelector('.reset-btn');
+const resumeBtn = document.querySelector('.resume-btn');
 
 // Add event-functionality that runs when the form button is clicked
 inputForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	if (
 		hoursInput.value.length !== 2 ||
-			minutesInput.value.length !== 2 ||
-			secondsInput.value.length !== 2
+		minutesInput.value.length !== 2 ||
+		secondsInput.value.length !== 2
 	) {
 		alert('All the time values must be in 2 digits!');
 		return;
@@ -26,7 +30,7 @@ inputForm.addEventListener('submit', (e) => {
 	// Call the secondsCountDown at an interval of 1 seconds
 	startCountDown = setInterval(secondsCountDown, 1000);
 
-  timerBtn.disabled = true;
+	timerBtn.disabled = true;
 	timerBtn.classList.add('disabled');
 });
 
@@ -95,3 +99,10 @@ function hoursCountDown() {
 		hoursDOM.innerHTML = '0' + hoursNumber.toString();
 	}
 }
+
+// Pause the Countdown
+pauseBtn.addEventListener('click', () => {
+	clearCountDown = clearInterval(startCountDown);
+	pauseBtn.classList.add('hide');
+	resumeBtn.classList.remove('hide');
+});
