@@ -17,6 +17,7 @@ function secondsCountDown() {
 		secondsValue.innerHTML = '00';
 		minutesValue.innerHTML = '00';
 		hoursValue.innerHTML = '00';
+		clearCountdown = clearInterval(startCountDown);
 		return;
 	}
 
