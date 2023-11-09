@@ -1,5 +1,5 @@
 // Set Variables that gets the timer values from the HTML code
-const daysvalue = document.querySelector('.days p')
+const daysValue = document.querySelector('.days p')
 const hoursValue = document.querySelector('.hours p');
 const minutesValue = document.querySelector('.minutes p');
 const secondsValue = document.querySelector('.seconds p');
@@ -14,12 +14,12 @@ function secondsCountDown() {
 		secondsValue.textContent === '00' &&
 		minutesValue.textContent === '00' &&
 		hoursValue.textContent === '00' &&
-    daysvalue.textContent === '00'
+    daysValue.textContent === '00'
 	) {
 		secondsValue.innerHTML = '00';
 		minutesValue.innerHTML = '00';
 		hoursValue.innerHTML = '00';
-    daysvalue.innerHTML = '00';
+    daysValue.innerHTML = '00';
     clearCountdown = clearInterval(startCountDown)
 		return;
 	}
@@ -87,14 +87,14 @@ function daysCountdown() {
 	minutesValue.innerHTML = '59'; //Reset the value of minutes
 	secondsValue.innerHTML = '60'; //Reset the value of seconds
 
-  let daysNumber = Number(daysvalue.textContent);
+  let daysNumber = Number(daysValue.textContent);
 
   daysNumber = daysNumber - 1;
 
   if (daysNumber > 9) {
-    daysvalue.innerHTML <= daysNumber.toString()
+    daysValue.innerHTML <= daysNumber.toString()
   } else if (daysNumber <= 9) {
-    daysvalue.innerHTML = '0' + daysNumber.toString()
+    daysValue.innerHTML = '0' + daysNumber.toString()
   }
 }
 
