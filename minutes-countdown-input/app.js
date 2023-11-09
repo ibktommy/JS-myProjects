@@ -35,14 +35,21 @@ inputForm.addEventListener('submit', (e) => {
 
 // Function that counts down the Seconds Value
 function secondsCountDown() {
-	// Check if the time values are '00' and stop the Countdown then reset them to all zeros then stop the rest of the codes from running
+	// Check if the time values are '00' and reset them to all zeros, stop the rest of the codes from running, stop the countdown and reset the form
 	if (
 		secondsDOM.textContent === '00' &&
-		minutesDOM.textContent === '00'
+		minutesDOM.textContent === '00' 
 	) {
 		secondsDOM.innerHTML = '00';
 		minutesDOM.innerHTML = '00';
-    clearCountDown = clearInterval(startCountDown)
+
+		// End countdown
+		alert('Countdown ended!');
+		inputForm.reset();
+		timerBtn.disabled = false;
+		timerBtn.classList.remove('disabled');
+		actionBtns.classList.add('hide');
+		clearCountDown = clearInterval(startCountDown);
 		return;
 	}
 
