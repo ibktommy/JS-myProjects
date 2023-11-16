@@ -1,4 +1,5 @@
 // Set Variables that gets the timer values from the HTML code
+const weeksValue = document.querySelector('.weeks p');
 const daysValue = document.querySelector('.days p');
 const hoursValue = document.querySelector('.hours p');
 const minutesValue = document.querySelector('.minutes p');
@@ -14,14 +15,26 @@ function secondsCountDown() {
 		secondsValue.textContent === '00' &&
 		minutesValue.textContent === '00' &&
 		hoursValue.textContent === '00' &&
-		daysValue.textContent === '00'
+		daysValue.textContent === '00' &&
+		weeksValue.textContent === '00'
 	) {
 		secondsValue.innerHTML = '00';
 		minutesValue.innerHTML = '00';
 		hoursValue.innerHTML = '00';
 		daysValue.innerHTML = '00';
+		weeksValue.innerHTML = '00';
 		clearCountdown = clearInterval(startCountDown);
 		return;
+	}
+
+	// Check if days, hours, minutes and seconds values are '00', then call the daysCountdown function
+	if (
+		daysValue.textContent === '00' &&
+		hoursValue.textContent === '00' &&
+		minutesValue.textContent === '00' &&
+		secondsValue.textContent === '00'
+	) {
+		weeksCountdown();
 	}
 
 	// Check if hours, minutes and seconds values are '00', then call the daysCountdown function
@@ -100,6 +113,24 @@ function daysCountdown() {
 	} else if (daysNumber <= 9) {
 		daysValue.innerHTML = '0' + daysNumber.toString();
 	}
+}
+
+// Function that counts down the Weeks Value
+function weeksCountdown() {
+	daysValue.innerHTML = '6'; //Reset the value of Days
+	hoursValue.innerHTML = '23'; //Reset the value of Hours
+	minutesValue.innerHTML = '59'; //Reset the value of minutes
+	secondsValue.innerHTML = '60'; //Reset the value of seconds
+
+  let weeksNumber = Number(weeksValue.textContent)
+
+  weeksNumber = weeksNumber - 1
+
+  if (weeksNumber > 9) {
+    weeksValue.innerHTML <= weeksNumber.toString()
+  } else if (weeksNumber <= 9) {
+    weeksValue.innerHTML = '0' + weeksNumber.toString()
+  }
 }
 
 // Call the secondsCountDown at an interval of 1 seconds
