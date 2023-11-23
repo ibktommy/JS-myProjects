@@ -149,7 +149,7 @@ function weeksCountdown() {
 
 // Function that counts down the Months Value
 function monthsCountdown() {
-  weeksValue.innerHTML = '4'; //Reset the value of Weeks
+  weeksValue.innerHTML = '3'; //Reset the value of Weeks
 	daysValue.innerHTML = '6'; //Reset the value of Days
 	hoursValue.innerHTML = '23'; //Reset the value of Hours
 	minutesValue.innerHTML = '59'; //Reset the value of minutes
