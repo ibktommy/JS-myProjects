@@ -1,10 +1,14 @@
-const weeksInput = document.querySelector('#weeks')
+const yearsInput = document.querySelector('#years');
+const monthsInput = document.querySelector('#months');
+const weeksInput = document.querySelector('#weeks');
 const daysInput = document.querySelector('#days');
 const hoursInput = document.querySelector('#hours');
 const minutesInput = document.querySelector('#minutes');
 const secondsInput = document.querySelector('#seconds');
 const timerBtn = document.querySelector('.btn');
 const inputForm = document.querySelector('form');
+let yearsDOM = document.querySelector('.years p');
+let monthsDOM = document.querySelector('.months p');
 let weeksDOM = document.querySelector('.weeks p');
 let daysDOM = document.querySelector('.days p');
 let hoursDOM = document.querySelector('.hours p');
@@ -20,7 +24,9 @@ inputForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	// Check if the timer values input are in 2 digits
 	if (
-	  weeksInput.value.length !== 2 ||
+		yearsInput.value.length !== 2 ||
+		monthsInput.value.length !== 2 ||
+		weeksInput.value.length !== 2 ||
 		daysInput.value.length !== 2 ||
 		hoursInput.value.length !== 2 ||
 		minutesInput.value.length !== 2 ||
@@ -31,7 +37,9 @@ inputForm.addEventListener('submit', (e) => {
 	}
 
 	// Pass the input timer values to the display values
-  weeksDOM.innerHTML = weeksInput.value
+  yearsDOM.innerHTML = yearsInput.value;
+	monthsDOM.innerHTML = monthsInput.value;
+	weeksDOM.innerHTML = weeksInput.value;
 	daysDOM.innerHTML = daysInput.value;
 	hoursDOM.innerHTML = hoursInput.value;
 	minutesDOM.innerHTML = minutesInput.value;
@@ -54,13 +62,17 @@ function secondsCountDown() {
 		minutesDOM.textContent === '00' &&
 		hoursDOM.textContent === '00' &&
 		daysDOM.textContent === '00' &&
-		weeksDOM.textContent === '00'
+		weeksDOM.textContent === '00' &&
+		monthsDOM.textContent === '00' &&
+		yearsDOM.textContent === '00'
 	) {
 		secondsDOM.innerHTML = '00';
 		minutesDOM.innerHTML = '00';
 		hoursDOM.innerHTML = '00';
 		daysDOM.innerHTML = '00';
 		weeksDOM.innerHTML = '00';
+		monthsDOM.innerHTML = '00';
+		yearsDOM.innerHTML = '00';
 
 		// End countdown
 		alert('Countdown ended!');
@@ -70,6 +82,29 @@ function secondsCountDown() {
 		actionBtns.classList.add('hide');
 		clearCountDown = clearInterval(startCountDown);
 		return;
+	}
+
+	// Check if months, weeks, days, hours, minutes and seconds values are '00', then call the daysCountdown function
+	if (
+    monthsDOM.textContent === '00' &&
+		weeksDOM.textContent === '00' &&
+		daysDOM.textContent === '00' &&
+		hoursDOM.textContent === '00' &&
+		minutesDOM.textContent === '00' &&
+		secondsDOM.textContent === '00'
+	) {
+		yearsCountdown();
+	}
+
+	// Check if weeks, days, hours, minutes and seconds values are '00', then call the daysCountdown function
+	if (
+		weeksDOM.textContent === '00' &&
+		daysDOM.textContent === '00' &&
+		hoursDOM.textContent === '00' &&
+		minutesDOM.textContent === '00' &&
+		secondsDOM.textContent === '00'
+	) {
+		monthsCountdown();
 	}
 
 	// Check if days, hours, minutes and seconds values are '00', then call the daysCountdown function
@@ -120,7 +155,7 @@ function minutesCountDown() {
 	let minutesNumber = Number(minutesDOM.textContent);
 
 	minutesNumber = minutesNumber - 1;
-	minutesDOM.textContent =  minutesNumber;
+	minutesDOM.textContent = minutesNumber;
 
 	if (minutesNumber > 9) {
 		minutesDOM.innerHTML = minutesNumber.toString();
@@ -171,16 +206,57 @@ function weeksCountdown() {
 	minutesDOM.innerHTML = '59'; //Reset the value of minutes
 	secondsDOM.innerHTML = '60'; //Reset the value of seconds
 
-  let weeksNumber = Number(weeksDOM.textContent)
+	let weeksNumber = Number(weeksDOM.textContent);
 
-  weeksNumber = weeksNumber - 1
+	weeksNumber = weeksNumber - 1;
 	weeksDOM.textContent = weeksNumber;
 
-  if (weeksNumber > 9) {
-    weeksDOM.innerHTML <= weeksNumber.toString()
-  } else if (weeksNumber <= 9) {
-    weeksDOM.innerHTML = '0' + weeksNumber.toString()
-  }
+	if (weeksNumber > 9) {
+		weeksDOM.innerHTML <= weeksNumber.toString();
+	} else if (weeksNumber <= 9) {
+		weeksDOM.innerHTML = '0' + weeksNumber.toString();
+	}
+}
+
+// Function that counts down the Months Value
+function monthsCountdown() {
+	weeksDOM.innerHTML = '3'; //Reset the value of Weeks
+	daysDOM.innerHTML = '6'; //Reset the value of Days
+	hoursDOM.innerHTML = '23'; //Reset the value of Hours
+	minutesDOM.innerHTML = '59'; //Reset the value of minutes
+	secondsDOM.innerHTML = '60'; //Reset the value of seconds
+
+	let monthsNumber = Number(monthsDOM.textContent);
+
+	monthsNumber = monthsNumber - 1;
+	monthsDOM.textContent = monthsNumber;
+
+	if (monthsNumber > 9) {
+		monthsDOM.innerHTML <= monthsNumber.toString();
+	} else if (monthsNumber <= 9) {
+		monthsDOM.innerHTML = '0' + monthsNumber.toString();
+	}
+}
+
+// Function that counts down the Years Value
+function yearsCountdown() {
+  monthsDOM.innerHTML = '11'; //Reset the value of Months
+	weeksDOM.innerHTML = '3'; //Reset the value of Weeks
+	daysDOM.innerHTML = '6'; //Reset the value of Days
+	hoursDOM.innerHTML = '23'; //Reset the value of Hours
+	minutesDOM.innerHTML = '59'; //Reset the value of minutes
+	secondsDOM.innerHTML = '60'; //Reset the value of seconds
+
+	let yearsNumber = Number(yearsDOM.textContent);
+
+	yearsNumber = yearsNumber - 1;
+	yearsDOM.textContent = yearsNumber;
+
+	if (yearsNumber > 9) {
+		yearsDOM.innerHTML <= yearsNumber.toString();
+	} else if (yearsNumber <= 9) {
+		yearsDOM.innerHTML = '0' + yearsNumber.toString();
+	}
 }
 
 // Pause the Countdown
@@ -202,7 +278,9 @@ resetBtn.addEventListener('click', () => {
 	inputForm.reset();
 	clearCountDown = clearInterval(startCountDown);
 
-  weeksDOM.innerHTML = '--';
+  yearsDOM.innerHTML = '--';
+  monthsDOM.innerHTML = '--';
+	weeksDOM.innerHTML = '--';
 	daysDOM.innerHTML = '--';
 	hoursDOM.innerHTML = '--';
 	minutesDOM.innerHTML = '--';

@@ -1,4 +1,5 @@
 // Set Variables that gets the timer values from the HTML code
+
 const minutesValue = document.querySelector('.minutes p');
 const secondsValue = document.querySelector('.seconds p');
 
@@ -23,6 +24,7 @@ function secondsCountDown() {
 	let secondsNumber = Number(secondsValue.textContent);
 
 	secondsNumber = secondsNumber - 1;
+	secondsValue.textContent = secondsNumber;
 
 	if (secondsNumber > 9) {
 		secondsValue.innerHTML = secondsNumber.toString();
@@ -38,6 +40,7 @@ function minutesCountDown() {
 	let minutesNumber = Number(minutesValue.textContent);
 
 	minutesNumber = minutesNumber - 1;
+	minutesValue.textContent = minutesNumber;
 
 	if (minutesNumber > 9) {
 		minutesValue.innerHTML = minutesNumber.toString();

@@ -88,6 +88,7 @@ function secondsCountDown() {
 	let secondsNumber = Number(secondsDOM.textContent);
 
 	secondsNumber = secondsNumber - 1;
+	secondsDOM.textContent = secondsNumber;
 
 	if (secondsNumber > 9) {
 		secondsDOM.innerHTML = secondsNumber.toString();
@@ -103,6 +104,7 @@ function minutesCountDown() {
 	let minutesNumber = Number(minutesDOM.textContent);
 
 	minutesNumber = minutesNumber - 1;
+	minutesDOM.textContent = minutesNumber;
 
 	if (minutesNumber > 9) {
 		minutesDOM.innerHTML = minutesNumber.toString();
@@ -119,6 +121,7 @@ function hoursCountDown() {
 	let hoursNumber = Number(hoursDOM.textContent);
 
 	hoursNumber = hoursNumber - 1;
+	hoursDOM.textContent = hoursNumber;
 
 	if (hoursNumber > 9) {
 		hoursDOM.innerHTML = hoursNumber.toString();

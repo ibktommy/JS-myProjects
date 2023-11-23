@@ -121,6 +121,7 @@ function secondsCountDown() {
 	let secondsNumber = Number(secondsDOM.textContent);
 
 	secondsNumber = secondsNumber - 1;
+	secondsDOM.textContent = secondsNumber;
 
 	if (secondsNumber > 9) {
 		secondsDOM.innerHTML = secondsNumber.toString();
@@ -136,6 +137,7 @@ function minutesCountDown() {
 	let minutesNumber = Number(minutesDOM.textContent);
 
 	minutesNumber = minutesNumber - 1;
+	minutesDOM.textContent = minutesNumber;
 
 	if (minutesNumber > 9) {
 		minutesDOM.innerHTML = minutesNumber.toString();
@@ -152,6 +154,7 @@ function hoursCountDown() {
 	let hoursNumber = Number(hoursDOM.textContent);
 
 	hoursNumber = hoursNumber - 1;
+	hoursDOM.textContent = hoursNumber;
 
 	if (hoursNumber > 9) {
 		hoursDOM.innerHTML = hoursNumber.toString();
@@ -169,6 +172,7 @@ function daysCountdown() {
 	let daysNumber = Number(daysDOM.textContent);
 
 	daysNumber = daysNumber - 1;
+	daysDOM.textContent = daysNumber;
 
 	if (daysNumber > 9) {
 		daysDOM.innerHTML <= daysNumber.toString();
@@ -187,6 +191,7 @@ function weeksCountdown() {
 	let weeksNumber = Number(weeksDOM.textContent);
 
 	weeksNumber = weeksNumber - 1;
+	weeksDOM.textContent = weeksNumber;
 
 	if (weeksNumber > 9) {
 		weeksDOM.innerHTML <= weeksNumber.toString();
@@ -206,6 +211,7 @@ function monthsCountdown() {
 	let monthsNumber = Number(monthsDOM.textContent);
 
 	monthsNumber = monthsNumber - 1;
+	monthsDOM.textContent = monthsNumber;
 
 	if (monthsNumber > 9) {
 		monthsDOM.innerHTML <= monthsNumber.toString();
@@ -233,6 +239,7 @@ resetBtn.addEventListener('click', () => {
 	inputForm.reset();
 	clearCountDown = clearInterval(startCountDown);
 
+	monthsDOM.innerHTML = '--'
 	weeksDOM.innerHTML = '--';
 	daysDOM.innerHTML = '--';
 	hoursDOM.innerHTML = '--';

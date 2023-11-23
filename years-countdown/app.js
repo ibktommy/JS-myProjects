@@ -88,6 +88,7 @@ function secondsCountDown() {
 	let secondsNumber = Number(secondsValue.textContent);
 
 	secondsNumber = secondsNumber - 1;
+	secondsValue.textContent = secondsNumber;
 
 	if (secondsNumber > 9) {
 		secondsValue.innerHTML = secondsNumber.toString();
@@ -103,6 +104,7 @@ function minutesCountDown() {
 	let minutesNumber = Number(minutesValue.textContent);
 
 	minutesNumber = minutesNumber - 1;
+	minutesValue.textContent = minutesNumber;
 
 	if (minutesNumber > 9) {
 		minutesValue.innerHTML = minutesNumber.toString();
@@ -119,6 +121,7 @@ function hoursCountDown() {
 	let hoursNumber = Number(hoursValue.textContent);
 
 	hoursNumber = hoursNumber - 1;
+	hoursValue.textContent = hoursNumber
 
 	if (hoursNumber > 9) {
 		hoursValue.innerHTML = hoursNumber.toString();
@@ -136,6 +139,7 @@ function daysCountdown() {
 	let daysNumber = Number(daysValue.textContent);
 
 	daysNumber = daysNumber - 1;
+	daysValue.textContent = daysNumber;
 
 	if (daysNumber > 9) {
 		daysValue.innerHTML <= daysNumber.toString();
@@ -154,6 +158,7 @@ function weeksCountdown() {
 	let weeksNumber = Number(weeksValue.textContent);
 
 	weeksNumber = weeksNumber - 1;
+	weeksValue.textContent = weeksNumber;
 
 	if (weeksNumber > 9) {
 		weeksValue.innerHTML <= weeksNumber.toString();
@@ -173,6 +178,7 @@ function monthsCountdown() {
 	let monthsNumber = Number(monthsValue.textContent);
 
 	monthsNumber = monthsNumber - 1;
+	monthsValue.textContent = monthsNumber;
 
 	if (monthsNumber > 9) {
 		monthsValue.innerHTML <= monthsNumber.toString();
@@ -193,6 +199,7 @@ function yearsCountdown() {
 	let yearsNumber = Number(yearsValue.textContent);
 
 	yearsNumber = yearsNumber - 1;
+	yearsValue.textContent = yearsNumber;
 
 	if (yearsNumber > 9) {
 		yearsValue.innerHTML <= yearsNumber.toString();
