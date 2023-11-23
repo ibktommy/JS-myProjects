@@ -1,4 +1,5 @@
 // Set Variables that gets the timer values from the HTML code
+const monthsValue = document.querySelector('.months p')
 const weeksValue = document.querySelector('.weeks p');
 const daysValue = document.querySelector('.days p');
 const hoursValue = document.querySelector('.hours p');
@@ -16,15 +17,28 @@ function secondsCountDown() {
 		minutesValue.textContent === '00' &&
 		hoursValue.textContent === '00' &&
 		daysValue.textContent === '00' &&
-		weeksValue.textContent === '00'
+		weeksValue.textContent === '00' &&
+		monthsValue.textContent === '00'
 	) {
 		secondsValue.innerHTML = '00';
 		minutesValue.innerHTML = '00';
 		hoursValue.innerHTML = '00';
 		daysValue.innerHTML = '00';
 		weeksValue.innerHTML = '00';
+		monthsValue.innerHTML = '00';
 		clearCountdown = clearInterval(startCountDown);
 		return;
+	}
+
+	// Check if days, hours, minutes and seconds values are '00', then call the MonthsCountdown function
+  if (
+    weeksValue.textContent === '00' &&
+		daysValue.textContent === '00' &&
+		hoursValue.textContent === '00' &&
+		minutesValue.textContent === '00' &&
+		secondsValue.textContent === '00'
+	) {
+		monthsCountdown();
 	}
 
 	// Check if days, hours, minutes and seconds values are '00', then call the WeeksCountdown function
@@ -122,15 +136,34 @@ function weeksCountdown() {
 	minutesValue.innerHTML = '59'; //Reset the value of minutes
 	secondsValue.innerHTML = '60'; //Reset the value of seconds
 
-  let weeksNumber = Number(weeksValue.textContent)
+	let weeksNumber = Number(weeksValue.textContent);
 
-  weeksNumber = weeksNumber - 1
+	weeksNumber = weeksNumber - 1;
 
-  if (weeksNumber > 9) {
-    weeksValue.innerHTML <= weeksNumber.toString()
-  } else if (weeksNumber <= 9) {
-    weeksValue.innerHTML = '0' + weeksNumber.toString()
-  }
+	if (weeksNumber > 9) {
+		weeksValue.innerHTML <= weeksNumber.toString();
+	} else if (weeksNumber <= 9) {
+		weeksValue.innerHTML = '0' + weeksNumber.toString();
+	}
+}
+
+// Function that counts down the Months Value
+function monthsCountdown() {
+  weeksValue.innerHTML = '4'; //Reset the value of Weeks
+	daysValue.innerHTML = '6'; //Reset the value of Days
+	hoursValue.innerHTML = '23'; //Reset the value of Hours
+	minutesValue.innerHTML = '59'; //Reset the value of minutes
+	secondsValue.innerHTML = '60'; //Reset the value of seconds
+
+	let monthsNumber = Number(monthsValue.textContent);
+
+	monthsNumber = monthsNumber - 1;
+
+	if (monthsNumber > 9) {
+		monthsValue.innerHTML <= monthsNumber.toString();
+	} else if (monthsNumber <= 9) {
+		monthsValue.innerHTML = '0' + monthsNumber.toString();
+	}
 }
 
 // Call the secondsCountDown at an interval of 1 seconds
